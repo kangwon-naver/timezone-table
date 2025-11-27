@@ -1,0 +1,61 @@
+# begin .github/workflows/meeting-time.yml
+name: Meeting Time Converter
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'Year (e.g. 2025)'
+        required: true
+        default: '2025'
+      month:
+        description: 'Month (1–12)'
+        required: true
+        default: '12'
+      day:
+        description: 'Day (1–31)'
+        required: true
+        default: '15'
+      hour:
+        description: 'Hour (0–23)'
+        required: true
+        default: '14'
+      minute:
+        description: 'Minute (0–59)'
+        required: true
+        default: '0'
+      timezone:
+        description: 'Original IANA timezone (e.g. Europe/Paris)'
+        required: true
+        default: 'Europe/Paris'
+      duration:
+        description: 'Duration in minutes'
+        required: true
+        default: '60'
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Run meeting time converter
+        env:
+          YEAR: ${{ inputs.year }}
+          MONTH: ${{ inputs.month }}
+          DAY: ${{ inputs.day }}
+          HOUR: ${{ inputs.hour }}
+          MINUTE: ${{ inputs.minute }}
+          TZ: ${{ inputs.timezone }}
+          DURATION: ${{ inputs.duration }}
+        run: |
+          uv run timezone_table.py $YEAR $MONTH $DAY $HOUR $MINUTE "$TZ" $DURATION >> $GITHUB_STEP_SUMMARY
+
+# end .github/workflows/meeting-time.yml
