@@ -33,6 +33,10 @@ on:
         required: true
         default: '60'
 
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   convert:
     runs-on: ubuntu-latest
