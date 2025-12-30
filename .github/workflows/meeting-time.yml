@@ -48,19 +48,15 @@ jobs:
       - name: Determine date values
         id: dates
         run: |
-          echo "year=${{ inputs.year || env.CURRENT_YEAR }}" >> $GITHUB_OUTPUT
-          echo "month=${{ inputs.month || env.CURRENT_MONTH }}" >> $GITHUB_OUTPUT
-          echo "day=${{ inputs.day || env.CURRENT_DAY }}" >> $GITHUB_OUTPUT
-        env:
-          CURRENT_YEAR:  ${{ date '+%Y' }}
-          CURRENT_MONTH: ${{ date '+%-m' }}
-          CURRENT_DAY:   ${{ date '+%-d' }}
+          echo "year=$(date +%Y)"     >> "$GITHUB_OUTPUT"
+          echo "month=$(date +%-m)"   >> "$GITHUB_OUTPUT"
+          echo "day=$(date +%-d)"     >> "$GITHUB_OUTPUT"
 
       - name: Run meeting time converter
         env:
-          YEAR: ${{ steps.dates.outputs.year }}
-          MONTH: ${{ steps.dates.outputs.month }}
-          DAY: ${{ steps.dates.outputs.day }}
+          YEAR:  ${{ steps.dates.outputs.year  || inputs.year  }}
+          MONTH: ${{ steps.dates.outputs.month || inputs.month }}
+          DAY:   ${{ steps.dates.outputs.day   || inputs.day   }}
           HOUR: ${{ inputs.hour }}
           MINUTE: ${{ inputs.minute }}
           TZ: ${{ inputs.timezone }}
