@@ -15,9 +15,9 @@ CITY_ZONES = [
     ("London", "Europe/London"),
     ("Paris", "Europe/Paris"),
     ("Berlin", "Europe/Berlin"),
+    ("Dubai", "Asia/Dubai"),
     ("New Delhi", "Asia/Kolkata"),
     ("Sydney", "Australia/Sydney"),
-    ("Dubai", "Asia/Dubai"),
 ]
 
 
