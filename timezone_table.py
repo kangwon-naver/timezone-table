@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import datetime
 import sys
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, available_timezones
 
 
 # List of cities you want to show
