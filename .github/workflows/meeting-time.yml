@@ -71,6 +71,7 @@ jobs:
           DURATION: ${{ inputs.duration }}
         run: |
           source .venv/bin/activate
+          uv pip list
           uv run timezone_table.py $YEAR $MONTH $DAY $HOUR $MINUTE "$TZ" $DURATION >> $GITHUB_STEP_SUMMARY
 
 # end .github/workflows/meeting-time.yml
