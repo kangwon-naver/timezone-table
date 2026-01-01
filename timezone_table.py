@@ -74,7 +74,7 @@ def main() -> None:
     not_available = []
 
     for city, tz_str in CITY_ZONES:
-        if tz_str in available_timezones():
+        if tz_str not in available_timezones():
             not_available.append((city, tz_str))
         else:
             print(format_meeting(meeting_start, meeting_end, city, tz_str))
