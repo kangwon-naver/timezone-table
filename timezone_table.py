@@ -12,6 +12,7 @@ CITY_ZONES = [
     ("San Diego", "America/Los_Angeles"),
     ("Chicago", "America/Chicago"),
     ("New York", "America/New_York"),
+    ("Lisbon", "Europe/Lisbon"),
     ("London", "Europe/London"),
     ("Rome", "Europe/Rome"),
     ("Oslo", "Europe/Oslo"),
