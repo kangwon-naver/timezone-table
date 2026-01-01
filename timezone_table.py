@@ -15,6 +15,7 @@ CITY_ZONES = [
     ("New York", "America/New_York"),
     ("Lisbon", "Europe/Lisbon"),
     ("London", "Europe/London"),
+    ("Laussane", "Europe/Laussane"),
     ("Rome", "Europe/Rome"),
     ("Oslo", "Europe/Oslo"),
     ("Paris", "Europe/Paris"),
@@ -70,8 +71,17 @@ def main() -> None:
     print("| City         | Local Time          | Time Zone |")
     print("|--------------|---------------------|-----------|")
 
+    not_available = []
+
     for city, tz_str in CITY_ZONES:
-        print(format_meeting(meeting_start, meeting_end, city, tz_str))
+        if tz_str in available_timezones():
+            not_available.append((city, tz_str))
+        else:
+            print(format_meeting(meeting_start, meeting_end, city, tz_str))
+    print("") # end of the table
+
+    for city, tz_str in not_available:
+        print((city, tz_str), "not available")
 
 
 if __name__ == "__main__":
