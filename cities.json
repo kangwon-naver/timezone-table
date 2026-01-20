@@ -1,4 +1,5 @@
 [
+  {"city": "San Diego",  "timezone": "America/Los_Angeles"},
   {"city": "Chicago",  "timezone": "America/Chicago"},
   {"city": "New York",  "timezone": "America/New_York"},
   {"city": "London",    "timezone": "Europe/London"},
