@@ -2,5 +2,5 @@
   {"city": "Chicago",  "timezone": "America/Chicago"},
   {"city": "New York",  "timezone": "America/New_York"},
   {"city": "London",    "timezone": "Europe/London"},
-  {"city": "Seoul",     "timezone": "Asia/Seoul"},
+  {"city": "Seoul",     "timezone": "Asia/Seoul"}
 ]
